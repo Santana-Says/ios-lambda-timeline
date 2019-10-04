@@ -38,6 +38,8 @@
 		B531815C234439E000389178 /* AudioCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531815B234439E000389178 /* AudioCommentVC.swift */; };
 		B531815E234457C500389178 /* piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B531815D234457C400389178 /* piano.mp3 */; };
 		B532023323455FA800BDD410 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532023223455FA800BDD410 /* CommentCell.swift */; };
+		B53202832346B51000BDD410 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53202822346B51000BDD410 /* CameraVC.swift */; };
+		B53202852346B5F600BDD410 /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53202842346B5F600BDD410 /* PlaybackView.swift */; };
 		E453457955DF907FCBD117F1 /* Pods_LambdaTimeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA39CACB677861CF84322FB5 /* Pods_LambdaTimeline.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		B531815B234439E000389178 /* AudioCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCommentVC.swift; sourceTree = "<group>"; };
 		B531815D234457C400389178 /* piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano.mp3; sourceTree = "<group>"; };
 		B532023223455FA800BDD410 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		B53202822346B51000BDD410 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		B53202842346B5F600BDD410 /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 				46A0366C2170158900E7FF73 /* SignInViewController.swift */,
 				46A0366921700F5100E7FF73 /* PostsCollectionViewController.swift */,
 				46CFE6F421707D0000E7FF73 /* ImagePostViewController.swift */,
+				B53202822346B51000BDD410 /* CameraVC.swift */,
 				46D571F72173FC2700E7FF73 /* ImagePostDetailTableViewController.swift */,
 				B531815B234439E000389178 /* AudioCommentVC.swift */,
 			);
@@ -190,6 +195,7 @@
 				46CFE7022171572600E7FF73 /* ImagePostCollectionViewCell.swift */,
 				B53181242342D88B00389178 /* FilterCell.swift */,
 				B532023223455FA800BDD410 /* CommentCell.swift */,
+				B53202842346B5F600BDD410 /* PlaybackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				B53181272342E4D400389178 /* UIImage + Scaling.swift in Sources */,
 				B531815A2344392C00389178 /* AudioRecorder.swift in Sources */,
+				B53202852346B5F600BDD410 /* PlaybackView.swift in Sources */,
 				B5318158234438F300389178 /* AudioPlayer.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,
 				46CFE6FF2171556D00E7FF73 /* ConcurrentOperation.swift in Sources */,
@@ -393,6 +400,7 @@
 				46D571F82173FC2700E7FF73 /* ImagePostDetailTableViewController.swift in Sources */,
 				46CFE7032171572600E7FF73 /* ImagePostCollectionViewCell.swift in Sources */,
 				4646379C2170091A00E7FF73 /* PostController.swift in Sources */,
+				B53202832346B51000BDD410 /* CameraVC.swift in Sources */,
 				464637992170048900E7FF73 /* FirebaseConvertible.swift in Sources */,
 				46A0366A21700F5100E7FF73 /* PostsCollectionViewController.swift in Sources */,
 				B53181532343F36400389178 /* FilterController.swift in Sources */,

@@ -98,6 +98,7 @@
                     <connections>
                         <segue destination="1Aw-4e-BW2" kind="show" identifier="AddImagePost" id="jaI-fq-Woc"/>
                         <segue destination="OyM-8q-Icp" kind="show" identifier="ViewImagePost" id="hhs-es-AdQ"/>
+                        <segue destination="WTd-if-Ptz" kind="presentation" id="dNY-hN-0tu"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRz-lg-pQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXa-A2-VJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968.1159420289857" y="-195.53571428571428"/>
+            <point key="canvasLocation" x="499" y="895"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gdW-Je-ais">
@@ -438,7 +439,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CdL-Y3-4ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968.1159420289857" y="472.09821428571428"/>
+            <point key="canvasLocation" x="1955" y="108"/>
         </scene>
         <!--Audio CommentVC-->
         <scene sceneID="DBu-h5-MXf">
@@ -581,10 +582,112 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWJ-6w-0hQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811.594202898551" y="472.09821428571428"/>
+            <point key="canvasLocation" x="2728" y="-331"/>
+        </scene>
+        <!--CameraVC-->
+        <scene sceneID="JrP-8Z-UjS">
+            <objects>
+                <viewController storyboardIdentifier="CameraView" id="WTd-if-Ptz" customClass="CameraVC" customModule="LambdaTimeline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TP4-ss-2zp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cI-uf-vSs" customClass="PlaybackView" customModule="LambdaTimeline" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6L-ff-E7k">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpz-VA-DpJ">
+                                        <rect key="frame" x="8" y="8" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="6li-x0-lT9"/>
+                                            <constraint firstAttribute="width" constant="35" id="oRS-4a-bcZ"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="x.circle" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteBtnTapped:" destination="WTd-if-Ptz" eventType="touchUpInside" id="c4E-UD-h0D"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEM-Wv-AOc">
+                                        <rect key="frame" x="359" y="8" width="47" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Post"/>
+                                        <connections>
+                                            <action selector="postBtnTapped:" destination="WTd-if-Ptz" eventType="touchUpInside" id="rMM-m4-WB2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXn-H9-uA9">
+                                        <rect key="frame" x="322" y="8" width="29" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="square.and.arrow.down" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="semibold"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveBtnTapped:" destination="WTd-if-Ptz" eventType="touchUpInside" id="hZw-i2-PKq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PXn-H9-uA9" firstAttribute="top" secondItem="2cI-uf-vSs" secondAttribute="topMargin" id="7hd-3b-8Kk"/>
+                                    <constraint firstItem="dpz-VA-DpJ" firstAttribute="leading" secondItem="2cI-uf-vSs" secondAttribute="leadingMargin" id="COs-lA-nbh"/>
+                                    <constraint firstAttribute="trailing" secondItem="l6L-ff-E7k" secondAttribute="trailing" id="Dje-XC-NvK"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bEM-Wv-AOc" secondAttribute="trailing" id="Rjk-tk-T7g"/>
+                                    <constraint firstAttribute="bottom" secondItem="l6L-ff-E7k" secondAttribute="bottom" id="fKR-jJ-1F1"/>
+                                    <constraint firstItem="dpz-VA-DpJ" firstAttribute="top" secondItem="2cI-uf-vSs" secondAttribute="topMargin" id="gAW-IL-G5K"/>
+                                    <constraint firstItem="l6L-ff-E7k" firstAttribute="top" secondItem="2cI-uf-vSs" secondAttribute="top" id="h7F-Xo-QDD"/>
+                                    <constraint firstItem="l6L-ff-E7k" firstAttribute="leading" secondItem="2cI-uf-vSs" secondAttribute="leading" id="igJ-2i-dlP"/>
+                                    <constraint firstItem="bEM-Wv-AOc" firstAttribute="top" secondItem="2cI-uf-vSs" secondAttribute="topMargin" id="sue-E2-P3D"/>
+                                    <constraint firstItem="bEM-Wv-AOc" firstAttribute="leading" secondItem="PXn-H9-uA9" secondAttribute="trailing" constant="8" id="tqr-4M-2ej"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCW-qI-6sD">
+                                <rect key="frame" x="157" y="648" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="hMd-UL-lkw"/>
+                                    <constraint firstAttribute="height" constant="100" id="qSz-yN-s2j"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="Record"/>
+                                <connections>
+                                    <action selector="recordButtonPressed:" destination="WTd-if-Ptz" eventType="touchUpInside" id="SVw-vY-283"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2cI-uf-vSs" firstAttribute="leading" secondItem="Chi-Vi-Mck" secondAttribute="leading" id="84i-kn-w9I"/>
+                            <constraint firstAttribute="bottom" secondItem="2cI-uf-vSs" secondAttribute="bottom" id="Bux-uE-x2h"/>
+                            <constraint firstItem="Chi-Vi-Mck" firstAttribute="bottom" secondItem="PCW-qI-6sD" secondAttribute="bottom" constant="60" id="c9L-D4-nN1"/>
+                            <constraint firstItem="2cI-uf-vSs" firstAttribute="top" secondItem="TP4-ss-2zp" secondAttribute="top" id="lCw-ZB-EUH"/>
+                            <constraint firstItem="2cI-uf-vSs" firstAttribute="trailing" secondItem="Chi-Vi-Mck" secondAttribute="trailing" id="mWc-qC-eoB"/>
+                            <constraint firstItem="PCW-qI-6sD" firstAttribute="centerX" secondItem="Chi-Vi-Mck" secondAttribute="centerX" id="oGb-D5-yiq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Chi-Vi-Mck"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="2cI-uf-vSs" id="ybs-PL-ZCB"/>
+                        <outlet property="deleteBtn" destination="dpz-VA-DpJ" id="tIX-Gw-nvp"/>
+                        <outlet property="playBackView" destination="l6L-ff-E7k" id="ZJ3-Wr-Foc"/>
+                        <outlet property="postBtn" destination="bEM-Wv-AOc" id="lcc-cv-SMK"/>
+                        <outlet property="recordButton" destination="PCW-qI-6sD" id="ENv-Di-O7V"/>
+                        <outlet property="saveBtn" destination="PXn-H9-uA9" id="RKF-Mw-Fxh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ewu-Bu-cKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="895"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Record" width="116" height="116"/>
         <image name="play.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="square.and.arrow.down" catalog="system" width="58" height="64"/>
+        <image name="x.circle" catalog="system" width="64" height="62"/>
     </resources>
 </document>
