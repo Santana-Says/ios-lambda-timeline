@@ -25,6 +25,9 @@ class CameraVC: UIViewController {
 	lazy private var captureSession = AVCaptureSession()
 	lazy private var fileOutput = AVCaptureMovieFileOutput()
 	private var player: AVPlayer?
+	private var videoUrl: URL?
+	private var playerLayer: AVPlayerLayer?
+    var postController: PostController!
 	
 	// MARK: - Life Cycle
 	
@@ -32,6 +35,8 @@ class CameraVC: UIViewController {
 		super.viewDidLoad()
 		
 		setupCamera()
+		toggleButtons()
+		
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
 		view.addGestureRecognizer(tapGesture)
 	}
@@ -53,7 +58,9 @@ class CameraVC: UIViewController {
 	// MARK: - IBActions
 	
 	@IBAction func deleteBtnTapped(_ sender: Any) {
-		
+		player = nil
+		playerLayer?.removeFromSuperlayer()
+		toggleButtons()
 	}
 	
 	@IBAction func saveBtnTapped(_ sender: Any) {
@@ -61,7 +68,30 @@ class CameraVC: UIViewController {
 	}
 	
 	@IBAction func postBtnTapped(_ sender: Any) {
+		let alert = UIAlertController(title: nil, message: "Enter a description", preferredStyle: .alert)
+		alert.addTextField(configurationHandler: nil)
 		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let postAction = UIAlertAction(title: "Post", style: .default) { (_) in
+			guard let description = alert.textFields?.first?.text, description != "" else { return }
+			guard let url = self.videoUrl,
+			let videoData = try? Data(contentsOf: url) else { return }
+			self.postController.createPost(description: description, ofType: .video, mediaData: videoData, ratio: nil) { (success) in
+				guard success else {
+					DispatchQueue.main.async {
+						self.presentInformationalAlertController(title: "Error", message: "Unable to create post. Try again.")
+					}
+					return
+				}
+				
+				DispatchQueue.main.async {
+					self.dismiss(animated: true, completion: nil)
+				}
+			}
+		}
+		
+		[cancelAction, postAction].forEach({ alert.addAction($0) })
+		present(alert, animated: true, completion: nil)
 	}
 	
 	@IBAction func recordButtonPressed(_ sender: Any) {
@@ -97,7 +127,7 @@ class CameraVC: UIViewController {
 		
 		//Input
 		guard captureSession.canAddInput(cameraInput) else {
-			fatalError("This session cant handle this tyoe of input")
+			fatalError("This session cant handle this type of input")
 		}
 		
 		captureSession.addInput(cameraInput)
@@ -162,8 +192,17 @@ class CameraVC: UIViewController {
 	
 	private func updateViews() {
 		recordButton.isSelected = fileOutput.isRecording
-		
 		recordButton.tintColor = recordButton.isSelected ? .black : .red
+	}
+	
+	private func toggleButtons() {
+		if player != nil {
+			recordButton.isHidden = true
+			[deleteBtn, saveBtn, postBtn].forEach({ $0.isHidden = false })
+		} else {
+			recordButton.isHidden = false
+			[deleteBtn, saveBtn, postBtn].forEach({ $0.isHidden = true })
+		}
 	}
 	
 	private func playVideo(from url: URL) {
@@ -173,12 +212,10 @@ class CameraVC: UIViewController {
 
 		playerLayer.frame = view.frame
 		view.layer.insertSublayer(playerLayer, below: deleteBtn.layer)
+		self.playerLayer = playerLayer
 		
 		player?.play()
-	}
-	
-	private func stopVideo() {
-		player = nil
+		toggleButtons()
 	}
 }
 
@@ -191,6 +228,7 @@ extension CameraVC: AVCaptureFileOutputRecordingDelegate {
 	
 	func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
 		DispatchQueue.main.async {
+			self.videoUrl = outputFileURL
 			self.updateViews()
 			self.playVideo(from: outputFileURL)
         }

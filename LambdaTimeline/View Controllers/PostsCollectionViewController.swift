@@ -154,8 +154,9 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
         if segue.identifier == "AddImagePost" {
             let destinationVC = segue.destination as? ImagePostViewController
             destinationVC?.postController = postController
-            
-        } else if segue.identifier == "ViewImagePost" {
+		} else if let cameraVC = segue.destination as? CameraVC {
+			cameraVC.postController = postController
+		} else if segue.identifier == "ViewImagePost" {
             
             let destinationVC = segue.destination as? ImagePostDetailTableViewController
             
