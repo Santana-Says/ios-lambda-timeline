@@ -29,11 +29,15 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
         let imagePostAction = UIAlertAction(title: "Image", style: .default) { (_) in
             self.performSegue(withIdentifier: "AddImagePost", sender: nil)
         }
+		let videoAction = UIAlertAction(title: "Video", style: .default) { (_) in
+			self.performSegue(withIdentifier: "AddVideoPost", sender: nil)
+		}
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alert.addAction(imagePostAction)
-        alert.addAction(cancelAction)
+		[imagePostAction, videoAction, cancelAction].forEach({
+			alert.addAction($0)
+		})
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -48,15 +52,17 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
         let post = postController.posts[indexPath.row]
         
         switch post.mediaType {
-            
         case .image:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagePostCell", for: indexPath) as? ImagePostCollectionViewCell else { return UICollectionViewCell() }
             
             cell.post = post
-            
             loadImage(for: cell, forItemAt: indexPath)
             
             return cell
+		case .video:
+			#warning("Do something with video")
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagePostCell", for: indexPath) as? ImagePostCollectionViewCell else { return UICollectionViewCell() }
+			return cell
         }
     }
     
@@ -67,12 +73,12 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
         let post = postController.posts[indexPath.row]
         
         switch post.mediaType {
-            
         case .image:
-            
             guard let ratio = post.ratio else { return size }
-            
             size.height = size.width * ratio
+		case .video:
+			#warning("Do something with video")
+			break
         }
         
         return size

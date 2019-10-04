@@ -170,14 +170,9 @@ class CameraVC: UIViewController {
 		player = AVPlayer(url: url)
 		
 		let playerLayer = AVPlayerLayer(player: player)
-		var topRect = self.view.bounds
 
-		topRect.size.height /= 4
-		topRect.size.width /= 4
-		topRect.origin.y = view.layoutMargins.top
-
-		playerLayer.frame = topRect
-		view.layer.addSublayer(playerLayer)
+		playerLayer.frame = view.frame
+		view.layer.insertSublayer(playerLayer, below: deleteBtn.layer)
 		
 		player?.play()
 	}

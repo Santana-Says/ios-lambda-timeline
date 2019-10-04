@@ -54,5 +54,7 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Were always listening...</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Were always watching....</string>
 </dict>
 </plist>

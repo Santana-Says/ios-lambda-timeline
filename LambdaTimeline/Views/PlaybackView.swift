@@ -16,7 +16,9 @@ class PlaybackView: UIView {
     }
     
     var videoPlayerView: AVCaptureVideoPreviewLayer {
-        return layer as! AVCaptureVideoPreviewLayer
+		let previewLayer = layer as! AVCaptureVideoPreviewLayer
+//		previewLayer.videoGravity = .resizeAspectFill
+        return previewLayer
     }
     
     var session: AVCaptureSession? {
